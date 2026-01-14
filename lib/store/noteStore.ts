@@ -11,7 +11,7 @@ type NoteStore = {
 const initialDraft: NewNote = {
   title: "",
   content: "",
-  tag: "",
+  tag: "Todo",
 };
 
 export const useNoteStore = create<NoteStore>()(

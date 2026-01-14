@@ -14,6 +14,20 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Note Hub",
   description: "Store for your notes",
+  openGraph: {
+    title: "Note Hub main page",
+    description: "Save your notes on Note Hub",
+    url: "https://08-zustand-chi-one.vercel.app/",
+    images: [
+      {
+        url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Note Hub",
+      },
+    ],
+    type: "article",
+  },
 };
 
 export default function RootLayout({
