@@ -35,7 +35,7 @@ export default function Modal({ children, onClose }: Prop) {
     <div className={css.backdrop} onClick={handleBackdropClick}>
       <div className={css.modal}>
         {children}
-        <button onClick={close}>Close</button>
+        <button type="button" onClick={onClose}>Close</button>
       </div>
     </div>
   );

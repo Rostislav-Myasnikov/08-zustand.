@@ -7,8 +7,8 @@ import { useState } from "react";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import { Toaster } from "react-hot-toast";
 import Pagination from "@/components/Pagination/Pagination";
-import AddNoteModal from "@/components/AddNoteModal/AddNoteModal";
 import css from "@/app/notes/notes.module.css";
+import { useRouter } from "next/navigation";
 
 type Prop = {
   tag?: string;
@@ -17,7 +17,9 @@ type Prop = {
 export default function NoteFilterClient({ tag }: Prop) {
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
-  const [isModal, setIsModal] = useState(false);
+
+  const router = useRouter();
+  const handleCreate = () => {router.push("/notes/action/create")}
 
   const { data, isLoading } = useQuery({
     queryKey: ["noteTag", tag, query, page],
@@ -27,7 +29,6 @@ export default function NoteFilterClient({ tag }: Prop) {
         query,
         page,
       }),
-    refetchOnMount: false,
     placeholderData: keepPreviousData,
   });
 
@@ -50,13 +51,12 @@ export default function NoteFilterClient({ tag }: Prop) {
               setPage={setPage}
             />
           )}
-          <button onClick={() => setIsModal(true)} className={css.button}>
+          <button onClick={handleCreate} className={css.button}>
             Create note +
           </button>
         </header>
         {data && <NoteList data={data?.notes} />}
       </div>
-      {isModal && <AddNoteModal closeModal={() => setIsModal(false)} />}
       <Toaster />
     </>
   );

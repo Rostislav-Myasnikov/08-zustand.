@@ -1,4 +1,10 @@
+import { Metadata } from "next";
 import css from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "Main page",
+  description: "Main page Note Hub",
+};
 
 export default function Main() {
   return (
